@@ -64,6 +64,12 @@ class Blockchain{
     this.pendingTransactions.push(transaction);
   }
 
+  printPendingTransactions(transaction) {
+    this.pendingTransactions.map((val) => {
+      console.log(JSON.stringify(val))
+    });
+  }
+
   getBalanceOfAddress(address){
     let balance = 0;
 
@@ -103,15 +109,17 @@ class Blockchain{
 let sailCoin = new Blockchain();
 sailCoin.createTransaction(new Transaction('address1', 'address2', 100));
 sailCoin.createTransaction(new Transaction('address2', 'address1', 50));
-
+sailCoin.printPendingTransactions();
 console.log('\n Starting the miner...');
 sailCoin.minePendingTransactions('xaviers-address');
+console.log('\n\n\n')
 
 console.log('\nBalance of xavier is', sailCoin.getBalanceOfAddress('xaviers-address'));
+console.log('\n\n\n')
 
 console.log('\n Starting the miner again...');
 sailCoin.minePendingTransactions('xaviers-address');
-
+console.log('\n\n\n')
 console.log('\nBalance of xavier is', sailCoin.getBalanceOfAddress('xaviers-address'));
-
+console.log('\n\n\n')
 console.log('\n' + JSON.stringify(sailCoin));
